@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "SVBasicManual";
+  src: url("/fonts/SVBasicManual.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "SVBasicManual";
+  src: url("/fonts/SVBasicManual-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

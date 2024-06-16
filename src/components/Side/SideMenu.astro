@@ -7,8 +7,18 @@ import SideItemCard from "./SideItemCard.astro";
 <div class="flex flex-col flex-1 gap-2">
   <div class="bg-zinc-900 rounded-lg">
     <ul>
-      <SideMenuItem href="/" iconName="carbon:home">Home</SideMenuItem>
-      <SideMenuItem href="#" iconName="carbon:search">Search</SideMenuItem>
+      <SideMenuItem href="/shop" iconName="carbon:store">Shop</SideMenuItem>
+      <SideMenuItem href="/story" iconName="tabler:heart">Story</SideMenuItem>
+      <SideMenuItem href="/menu" iconName="carbon:book">Menu</SideMenuItem>
+      <SideMenuItem href="/lab" floor={3} iconName="tabler:flask-2">
+        Lab
+      </SideMenuItem>
+      <SideMenuItem href="/cafe" floor={2} iconName="tabler:coffee">
+        Cafe
+      </SideMenuItem>
+      <SideMenuItem href="/" floor={1} iconName="tabler:home">
+        Home
+      </SideMenuItem>
     </ul>
   </div>
 

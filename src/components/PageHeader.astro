@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Icon from "astro-icon";
+import logo from "../assets/jojologo.svg"; // svgReference === '/src/image.svg'
 ---
 
 <div
@@ -10,9 +12,15 @@ import Icon from "astro-icon";
   <a
     href="/"
     aria-label="go back to home page"
-    class="bg-zinc-900 rounded-full inline-flex justify-center items-center h-8 w-8"
+    class="flex justify-center items-center gap-2"
   >
-    <Icon name="bi:chevron-left" class="h-4 w-4 -ml-0.5" />
+    <Image
+      src="../assets/jojologo.svg"
+      width={50}
+      height={50}
+      alt="JOJO Soba"
+    />
+    <span class="font-bold grow text-4xl">JOJO Soba</span>
   </a>
   <div class="flex items-center gap-3">
     <a
@@ -21,14 +29,14 @@ import Icon from "astro-icon";
       class="flex relative overflow-hidden group bg-gradient-to-br from-black/10 to-black/40 rounded-md px-2.5 h-7 text-gray-200 hover:text-white transition-colors gap-1 items-center"
     >
       <span class="text-xs">
-        Deploy on <span class="font-bold">Vercel</span>
+        <span class="font-bold">Our Course</span>
       </span>
-      <Icon name="ion:logo-vercel" class="h-4 w-4" />
+      <Icon name="ion:book" class="h-4 w-4" />
     </a>
     <a
       target="_blank"
       aria-label={"github repository"}
-      href="https://github.com/igorm84/spotify-astro-transitions"
+      href="https://github.com/jojosoba/web"
       class="text-gray-200 hover:text-white"
     >
       <Icon name="mdi:github" class="h-7 w-7" />

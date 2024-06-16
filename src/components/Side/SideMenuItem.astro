@@ -4,9 +4,10 @@ import Icon from "astro-icon";
 type Props = {
   href?: string;
   iconName?: string;
+  floor?: number;
 };
 
-const { href, iconName } = Astro.props;
+const { href, iconName, floor } = Astro.props;
 ---
 
 <li>
@@ -16,5 +17,12 @@ const { href, iconName } = Astro.props;
   >
     <Icon name={iconName} class="h-6 w-6" />
     <slot />
+    {
+      floor ? (
+        <div class="ml-auto -rotate-3 bg-secondary-500 px-2 rounded-md text-white">
+          FLR {floor}
+        </div>
+      ) : null
+    }
   </a>
 </li>
