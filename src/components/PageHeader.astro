@@ -14,7 +14,13 @@ import logo from "../assets/jojologo.svg"; // svgReference === '/src/image.svg'
     aria-label="go back to home page"
     class="flex justify-center items-center gap-2"
   >
-    <Image src={logo} width={50} height={50} alt="JOJO Soba" />
+    <Image
+      src={logo}
+      width={50}
+      height={50}
+      alt="JOJO Soba"
+      loading={"eager"}
+    />
     <span class="font-bold grow text-4xl">JOJO Soba</span>
   </a>
   <div class="flex items-center gap-3">
