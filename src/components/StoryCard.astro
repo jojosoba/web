@@ -1,0 +1,39 @@
+---
+import type { Playlist, Story } from "../lib/data";
+import { Image } from "astro:assets";
+import PlayButton from "./PlayButton.astro";
+import { colors } from "../lib/colors";
+interface Props {
+  story: Story;
+}
+
+const { story } = Astro.props;
+console.log(story);
+---
+
+<a
+  href={`/stories/${story.slug}`}
+  class="playlist-item flex group relative transition-all duration-300 overflow-hslugden items-center gap-5 rounded-md overflow-hidden shadow-lg hover:shadow-xl outline-none bg-zinc-500/30 hover:bg-zinc-500/50 focus:bg-zinc-500/50"
+  data-color={colors.teal}
+  transition:name=`playlist ${story.slug} box`
+>
+  <div class="h-20 w-20">
+    <img
+      src={story.cover}
+      alt={story.title}
+      height="80"
+      width="80"
+      class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+      transition:name=`playlist ${story.slug} image`
+    />
+  </div>
+  <div class="font-bold block" transition:name=`playlist ${story.slug} title`>
+    {story.title}
+  </div>
+  <!-- <div
+    class={"absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"}
+    transition:name=`playlist ${story.slug} play`
+  >
+    <PlayButton />
+  </div> -->
+</a>

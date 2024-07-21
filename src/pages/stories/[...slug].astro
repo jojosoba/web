@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const storyEntries = await getCollection("stories");
+  return storyEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const story = entry.data;
+const { Content } = await entry.render();
+---
+
+<Layout image={story?.cover} title={story?.title || "404"}>
+  <div
+    class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden rounded-lg"
+    transition:name=`story ${story?.slug} box`
+  >
+    <PageHeader />
+    <div
+      class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
+    >
+      <div class="h-52 w-52 flex-none">
+        <img
+          src={story?.cover}
+          alt={story?.title}
+          class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+          transition:name=`story ${story?.slug} image`
+        />
+      </div>
+      <div class="flex flex-col justify-between">
+        <div>
+          <h1 class="title-clamp font-bold block">
+            {story?.title}
+            <span transition:name=`story ${story?.slug} title`></span>
+          </h1>
+        </div>
+        <div class="flex-1 flex items-end">
+          <div class="text-sm">
+            <!-- <InlineArtists artists={story?.artists || []} /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100">
+      <div class="flex gap-1 items-center">
+        <PlayButton size="lg" />
+        <div class="ml-4" transition:name=`story ${story?.slug} play`></div>
+        <LikeButton />
+        <DotsButton />
+      </div>
+      <div class="px-6 pt-4">
+        <MusicsTable />
+      </div>
+    </div> -->
+    <div class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b from-context">
+      <img
+        src={story?.cover}
+        alt={story?.title}
+        class="el-to-fade transition-all duration-500 z-[-1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t via-transparent from-zinc-900"
+      >
+      </div>
+    </div>
+    <div class="px-6 pt-4">
+      <Content />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .title-clamp {
+    font-size: clamp(10px, 5vw, 40px);
+    line-height: 1;
+  }
+</style>

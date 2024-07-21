@@ -7,6 +7,12 @@ export interface Playlist {
   cover: string;
   artists: string[];
 }
+export interface Story {
+  title: string;
+  color: (typeof colors)[keyof typeof colors];
+  cover: string;
+  slug: string;
+}
 
 export const playlists: Playlist[] = [
   {

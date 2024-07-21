@@ -2,12 +2,21 @@
   font-family: "SVBasicManual";
   src: url("/fonts/SVBasicManual.ttf") format("truetype");
   font-weight: normal;
+  unicode-range:
+    U+00- U+0DFF,
+    U+0E80- U+FFFF;
 }
 
 @font-face {
   font-family: "SVBasicManual";
   src: url("/fonts/SVBasicManual-Bold.ttf") format("truetype");
   font-weight: bold;
+}
+
+@font-face {
+  font-family: "Mali";
+  src: url(/fonts/Mali-Regular.ttf) format("truetype");
+  unicode-range: U+0E00- U+0E7F;
 }
 
 @tailwind base;
