@@ -10,7 +10,12 @@ interface Props {
 const { story } = Astro.props;
 console.log(story);
 
-const images = import.meta.glob("../assets/*");
+const images = import.meta.glob("src/assets/*");
+console.log(images, story.cover);
+if (!images[story.cover])
+  throw new Error(
+    `"${story.cover}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+  );
 ---
 
 <a
