@@ -9,6 +9,8 @@ interface Props {
 
 const { story } = Astro.props;
 console.log(story);
+
+const images = import.meta.glob("../assets/*");
 ---
 
 <a
@@ -18,14 +20,19 @@ console.log(story);
   transition:name=`playlist ${story.slug} box`
 >
   <div class="h-20 w-20">
-    <img
+    <Image
+      src={images[story.cover]()}
+      alt={story.title}
+      class="object-cover h-full w-full"
+    />
+    <!-- <img
       src={story.cover}
       alt={story.title}
       height="80"
       width="80"
       class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
       transition:name=`playlist ${story.slug} image`
-    />
+    /> -->
   </div>
   <div class="font-bold block" transition:name=`playlist ${story.slug} title`>
     {story.title}

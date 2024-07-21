@@ -6,6 +6,7 @@
     "allowJs": true,
     "paths": {
       "@assets/*": ["src/assets/*"]
-    }
+    },
+    "types": ["vite/client"]
   }
 }
