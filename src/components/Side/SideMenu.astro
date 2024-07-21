@@ -2,6 +2,9 @@
 import SideMenuItem from "./SideMenuItem.astro";
 import { sidebarPlaylists } from "../../lib/data";
 import SideItemCard from "./SideItemCard.astro";
+import StoryCard from "../StoryCard.astro";
+import { getCollection } from "astro:content";
+const storyEntries = await getCollection("stories");
 ---
 
 <div class="flex flex-col flex-1 gap-2">
@@ -26,10 +29,10 @@ import SideItemCard from "./SideItemCard.astro";
 
   <div class="bg-zinc-900 rounded-lg flex-1">
     <ul>
-      <SideMenuItem href="#" iconName="ic:round-chat">Web Board</SideMenuItem>
+      <SideMenuItem href="#" iconName="ic:round-chat">Blogs</SideMenuItem>
     </ul>
     <ul class="pl-2">
-      {sidebarPlaylists.map((playlist) => <SideItemCard {playlist} />)}
+      {storyEntries.map((story) => <SideItemCard playlist={story.data} />)}
     </ul>
   </div>
 </div>

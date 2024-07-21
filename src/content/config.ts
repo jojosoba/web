@@ -2,8 +2,11 @@
 import { z, defineCollection } from "astro:content";
 
 const storySchema = z.object({
+  title: z.string(),
+  author: z.string().optional(),
   tags: z.array(z.string()),
-  image: z.string().optional(),
+  cover: z.string().optional(),
+  slug: z.string(),
 });
 
 // 2. Define a `type` and `schema` for each collection
