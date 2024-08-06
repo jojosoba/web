@@ -10,20 +10,22 @@ const storyEntries = await getCollection("stories");
 <div class="flex flex-col flex-1 gap-2">
   <div class="bg-zinc-900 rounded-lg">
     <ul>
-      <SideMenuItem href="/shop" iconName="carbon:store">Shop</SideMenuItem>
-      <SideMenuItem href="/story" iconName="mdi:heart-outline">
-        Story
-      </SideMenuItem>
-      <SideMenuItem href="/menu" iconName="carbon:book">Menu</SideMenuItem>
-      <SideMenuItem href="/lab" floor={3} iconName="tabler:flask-2">
-        Lab
-      </SideMenuItem>
-      <SideMenuItem href="/cafe" floor={2} iconName="tabler:coffee">
-        Cafe
-      </SideMenuItem>
-      <SideMenuItem href="/" floor={1} iconName="tabler:home">
-        Home
-      </SideMenuItem>
+      <SideMenuItem href="/shop" iconName="carbon:store" title="Shop" />
+      <SideMenuItem href="/story" iconName="mdi:heart-outline" title="Story" />
+      <SideMenuItem href="/menu" iconName="carbon:book" title="Menu" />
+      <SideMenuItem
+        href="/lab"
+        floor={3}
+        iconName="tabler:flask-2"
+        title="Lab"
+      />
+      <SideMenuItem
+        href="/cafe"
+        floor={2}
+        iconName="tabler:coffee"
+        title="Cafe"
+      />
+      <SideMenuItem href="/" floor={1} iconName="tabler:home" title="Home" />
     </ul>
   </div>
 

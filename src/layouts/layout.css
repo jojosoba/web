@@ -41,3 +41,12 @@ body {
 *::-webkit-scrollbar-thumb:active {
   background-color: rgb(70, 70, 70);
 }
+.custom-pattern {
+  background: repeating-conic-gradient(
+    from 45deg,
+    #65bfff 0% 25%,
+    #bb00ff 0% 50%
+  );
+  background-size: 32px 32px;
+  background-color: #e4e4ed;
+}
