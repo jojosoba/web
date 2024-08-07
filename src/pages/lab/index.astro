@@ -8,6 +8,7 @@ import Layout from "../../layouts/Layout.astro";
 import { playlists, morePlaylists } from "../../lib/data";
 import { Image } from "astro:assets";
 import goodwheat from "../../assets/goodwheat.png";
+import stangplatinum from "../../assets/stpt.png"
 
 const storyEntries = await getCollection("stories");
 ---
@@ -21,9 +22,16 @@ const storyEntries = await getCollection("stories");
     <PageHeader type="lab" transition:name="lab" />
 
     <Image src={goodwheat} alt="Lab" class="w-full" />
+    <Image src={stangplatinum} alt="Lab" class="w-full" />
     <h1 class="text-4xl font-bold text-center mt-4">
-      call me 063-897-เก้าหนึ่งเก้าเจ็ด
+      call me 063-897-แปดหนึ่งแปดเจ็ด
     </h1>
+    เขียนสตอรี่ ว่าบัควีทมันดียังไง sustainable, regenerative. แล้วก็ history+background, WHy BUCKWHEAT,
+    <br/>
+    How to Plant bw,
+    How to collab,
+    How to cook,
+    Lab Findings,
   </div>
   <div class="px-6 relative z-10 mt-4"></div>
 </Layout>

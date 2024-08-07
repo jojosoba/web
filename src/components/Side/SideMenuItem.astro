@@ -17,12 +17,14 @@ console.log(Astro.url.pathname.includes(href));
     {href}
     class={`flex gap-4 ${
       Astro.url.pathname.includes(href) && href != "/"
-        ? "bg-fuchsia-800 custom-pattern text-white hover:text-red"
+        ? "bg-fuchsia-800 custom-pattern text-white border-x-violet-100 transform skew-y-[24] hover:text-red"
         : "text-zinc-400 hover:text-zinc-100 "
-    } py-3.5 px-5 font-semibold transition-all duration-300`}
+    } py-3.5 px-5 font-semibold transition-all duration-300 drop-shadow-2xl`}
   >
-    <Icon name={iconName} class="h-6 w-6" />
+    <Icon name={iconName} class="h-6 w-6 drop-shadow-2xl" />
+    <p class="drop-shadow-2xl">
     {title}
+    </p>
     {
       floor ? (
         <div class="ml-auto -rotate-3 bg-secondary-500 px-2 rounded-md text-white">

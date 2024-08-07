@@ -7,23 +7,31 @@ import MusicsTable from "../../components/MusicsTable.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import PlayButton from "../../components/PlayButton.astro";
 import Layout from "../../layouts/Layout.astro";
-import { allPlaylists } from "../../lib/data";
-
+// import { allmenus } from "../../lib/data";
 export function getStaticPaths() {
-  return allPlaylists.map((playlist) => ({
-    params: {
-      id: playlist.id,
-    },
+ 
+const allMenus = [{
+  slug: "soba100",
+  title: "Soba 100%",
+  description: "The best of soba music",
+}]
+
+ return allMenus.map((menu) => ({
+    params:menu
+    
   }));
 }
 
-const playlist = allPlaylists.find((playlist) => playlist.id === id);
+// const menu = allmenus.find((playlist) => playlist.id === id);
+// const menu = allMenus.find((menu) => menu.slug === slug);
+const menu = Astro.params;
+
 ---
 
-<Layout image={playlist?.cover} title={playlist?.title || "404"}>
+<Layout image={menu?.cover} title={menu?.title || "404"}>
   <div
     class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden rounded-lg"
-    transition:name=`playlist ${playlist?.id} box`
+    <!-- transition:name=`menu ${menu?.id} box` -->
   >
     <PageHeader />
     <div
@@ -31,23 +39,23 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
     >
       <div class="h-52 w-52 flex-none">
         <img
-          src={playlist?.cover}
-          alt={playlist?.title}
+          src={menu?.cover}
+          alt={menu?.title}
           class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
-          transition:name=`playlist ${playlist?.id} image`
+          transition:name=`menu ${menu?.id} image`
         />
       </div>
       <div class="flex flex-col justify-between">
-        <div class="flex flex-1 items-end">Playlist</div>
+        <div class="flex flex-1 items-end">menu</div>
         <div>
           <h1 class="title-clamp font-bold block">
-            {playlist?.title}
-            <span transition:name=`playlist ${playlist?.id} title`></span>
+            {menu?.title}
+            <span transition:name=`menu ${menu?.id} title`></span>
           </h1>
         </div>
         <div class="flex-1 flex items-end">
           <div class="text-sm">
-            <InlineArtists artists={playlist?.artists || []} />
+            <InlineArtists artists={menu?.artists || []} />
             <div class="mt-1">
               <span class="font-semibold">58 likes</span>, 83 musics, <span
                 class="text-gray-300">about 3h 15min</span
@@ -61,7 +69,7 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
     <div class="bg-zinc-900/30 mt-6 flex-1 p-6 blur-100">
       <div class="flex gap-1 items-center">
         <PlayButton size="lg" />
-        <div class="ml-4" transition:name=`playlist ${playlist?.id} play`></div>
+        <div class="ml-4" transition:name=`menu ${menu?.id} play`></div>
         <LikeButton />
         <DotsButton />
       </div>
@@ -71,11 +79,10 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
     </div>
     <div
       class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b from-context"
-      style=`--context-color:${playlist?.color.accent}`
     >
       <img
-        src={playlist?.cover}
-        alt={playlist?.title}
+        src={menu?.cover}
+        alt={menu?.title}
         class="el-to-fade transition-all duration-500 z-[-1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
       />
       <div
