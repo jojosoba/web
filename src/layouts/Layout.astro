@@ -20,8 +20,10 @@ import SideMenu from "../components/Side/SideMenu.astro";
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Jojo soba website, the craft soba made with love for flour."
+      content="Jojo soba, the craft soba made with love for flour. At Samyan"
     />
+    <meta name="location" content="1359 Rama 4 Road, Pathumwan, Bangkok, Thailand" />
+    <meta name="keywords" content="soba, jojo, samyan, food, restaurant, flour, lab, bangkok, specialty, coffee" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -39,16 +41,16 @@ import SideMenu from "../components/Side/SideMenu.astro";
         <slot />
       </div>
     </div>
+    <div>
+    <h2>
+      location: 1359 Rama 4 Road, Pathumwan, Bangkok, Thailand</h2></div>
     <div
       id="not-support"
       class="fixed hidden bg-red-700 bottom-0 inset-x-0 rounded-t-md text-center py-2 lg:py-4 z-50 font-semibold"
     >
       It seems your browser does not support view transitions yet :( try it
-      using chrome or edge <a
-        class="underline"
-        href="https://github.com/igorm84/spotify-astro-transitions"
-        >(see docs here)</a
-      >
+      using chrome or edge
+      
     </div>
     <script is:inline defer>
       function setContainerColor(dataColor) {
