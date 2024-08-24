@@ -59,20 +59,20 @@ import SideMenu from "../components/Side/SideMenu.astro";
             width="600"
             height="350"
             style="border:0;"
-            class="rounded-lg"
+            class="rounded-lg w-full"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
-    <div
+    <!-- <div
       id="not-support"
       class="fixed hidden bg-red-700 bottom-0 inset-x-0 rounded-t-md text-center py-2 lg:py-4 z-50 font-semibold"
     >
       It seems your browser does not support view transitions yet :( try it
       using chrome or edge
-    </div>
+    </div> -->
     <script is:inline defer>
       function setContainerColor(dataColor) {
         const playlistContainer = document.getElementById("playlist-container");
