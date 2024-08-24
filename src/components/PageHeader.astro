@@ -64,6 +64,15 @@ const type = "cafe";
   </div>
 </div>
 
+<style>
+  #PhoneMenu {
+    transition: max-height 0.3s ease-in-out;
+  }
+  .menu-open {
+    max-height: 500px; /* Adjust this based on the height of your menu */
+  }
+</style>
+
 <script>
   import { isMenuOpen } from "../store.js";
   isMenuOpen.subscribe((open) => {
@@ -77,14 +86,26 @@ const type = "cafe";
 
   // Set the store to true when the button is clicked
   function openMenu() {
-    console.log("OPEN");
+    const phoneMenu = document.getElementById("PhoneMenu");
     if (isMenuOpen.value) {
       isMenuOpen.set(false);
+
+      phoneMenu.classList.add("menu-open");
     } else {
       isMenuOpen.set(true);
+      phoneMenu.classList.remove("menu-open");
     }
   }
-
+  // function openMenu() {
+  //   const phoneMenu = document.getElementById("PhoneMenu");
+  //   if (isMenuOpen.value) {
+  //     phoneMenu.style.maxHeight = "0px";
+  //     isMenuOpen.set(false);
+  //   } else {
+  //     phoneMenu.style.maxHeight = phoneMenu.scrollHeight + "px";
+  //     isMenuOpen.set(true);
+  //   }
+  // }
   // Add an event listener to the button
   document.getElementById("openMenu").addEventListener("click", openMenu);
 
