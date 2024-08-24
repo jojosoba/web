@@ -4,10 +4,7 @@ interface Props {
   image?: string;
 }
 
-const {
-  title = "Home",
-  image = "https://res.cloudinary.com/dp3ppkxo5/image/upload/v1693776174/spotify-astro/playlist_2_f9ymlx.jpg",
-} = Astro.props;
+const { title = "Home", image = "https://jojosoba.com/og.png" } = Astro.props;
 import { ViewTransitions } from "astro:transitions";
 import "../main.css";
 import "./layout.css";
@@ -22,8 +19,14 @@ import SideMenu from "../components/Side/SideMenu.astro";
       name="description"
       content="Jojo soba, the craft soba made with love for flour. At Samyan"
     />
-    <meta name="location" content="1359 Rama 4 Road, Pathumwan, Bangkok, Thailand" />
-    <meta name="keywords" content="soba, jojo, samyan, food, restaurant, flour, lab, bangkok, specialty, coffee" />
+    <meta
+      name="location"
+      content="1359 Rama 4 Road, Pathumwan, Bangkok, Thailand"
+    />
+    <meta
+      name="keywords"
+      content="soba, jojo, samyan, food, restaurant, flour, lab, bangkok, specialty, coffee"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -38,19 +41,37 @@ import SideMenu from "../components/Side/SideMenu.astro";
         <SideMenu />
       </div>
       <div class="rounded-lg bg-zinc-900 flex-1 mx-auto overflow-y-auto">
-        <slot />
+        <div class="min-h-screen">
+          <slot />
+        </div>
+        <div class="p-2 flex flex-row rounded-md">
+          <div>
+            <h1>Jojo Soba</h1>
+            <h2>Crafted with ❤️ for flour</h2>
+            <br />
+            <h2>
+              location: 1359 Rama 4 Road, Wang Mai, Pathumwan, Bangkok, Thailand
+              10330
+            </h2>
+          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.736894719389!2d100.52305547508992!3d13.73437268665569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2994e5dcec8f1%3A0xdc021721e449becd!2sJOJO%20SOBA!5e0!3m2!1sen!2sth!4v1724481638247!5m2!1sen!2sth"
+            width="600"
+            height="350"
+            style="border:0;"
+            class="rounded-lg"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
     </div>
-    <div>
-    <h2>
-      location: 1359 Rama 4 Road, Pathumwan, Bangkok, Thailand</h2></div>
     <div
       id="not-support"
       class="fixed hidden bg-red-700 bottom-0 inset-x-0 rounded-t-md text-center py-2 lg:py-4 z-50 font-semibold"
     >
       It seems your browser does not support view transitions yet :( try it
       using chrome or edge
-      
     </div>
     <script is:inline defer>
       function setContainerColor(dataColor) {

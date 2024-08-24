@@ -1,72 +1,97 @@
 ---
 import { Image } from "astro:assets";
 import Icon from "astro-icon";
+import DynamicLogo from "./DynamicLogo.svelte";
 import logo from "../assets/jojologo.svg"; // svgReference === '/src/image.svg'
 import lablogo from "../assets/flourlab.svg"; // svgReference === '/src/image.svg'
+import Counter from "./Counter.svelte";
+import PhoneMenu from "./PhoneMenu.svelte";
+import SideMenu from "./Side/SideMenu.astro";
 
-interface Props {
-  type: "lab" | "cafe" | "soba";
-}
-let type;
-const slug = Astro.url.pathname;
-console.log(slug);
-
-// const { type } = Astro.props;
-
-if (slug.includes("lab")) {
-  type = "lab";
-} else if (slug.includes("cafe")) {
-  type = "cafe";
-} else {
-  type = "soba";
-}
+const type = "cafe";
 ---
 
-<div
-  class="relative z-10 py-4 px-6 flex justify-between"
-  transition:name="page header"
-  transition:persist
->
-  <a
-    href="/"
-    aria-label="go back to home page"
-    class="flex justify-center items-center gap-2"
+<div>
+  <div
+    class="flex flex-1 flex-col gap-2 lg:hidden z-30 transition-all ease-in-out"
+    id="PhoneMenu"
   >
-    <Image
-      src={type == "lab" ? lablogo : logo}
-      width={50}
-      height={50}
-      alt="JOJO Soba"
-      loading={"eager"}
-    />
-    {
-      type === "lab" ? (
-        <span class="font-bold grow text-4xl">Flour Lab</span>
-      ) : type === "cafe" ? (
-        <span class="font-bold grow text-4xl">JOJO Cafe</span>
-      ) : (
-        <span class="font-bold grow text-4xl">JOJO Soba</span>
-      )
-    }
-  </a>
-  <div class="flex items-center gap-3">
+    <!-- <PhoneMenu client:only /> -->
+    <SideMenu mode="phone" />
+  </div>
+  <div
+    class="relative z-10 py-4 px-6 flex justify-between"
+    transition:name="page header"
+    transition:persist
+  >
     <a
-      target="_blank"
-      href="https://vercel.com/templates/astro/view-transitions"
-      class="flex relative overflow-hidden group bg-gradient-to-br from-black/10 to-black/40 rounded-md px-2.5 h-7 text-gray-200 hover:text-white transition-colors gap-1 items-center"
+      href="/"
+      aria-label="go back to home page"
+      class="flex justify-center items-center gap-2 lg:hidden"
     >
-      <span class="text-xs">
-        <span class="font-bold">Our Course</span>
-      </span>
-      <Icon name="ion:book" class="h-4 w-4" />
+      <Image
+        src={logo}
+        width={50}
+        height={50}
+        alt="JOJO Soba"
+        loading="eager"
+      />
+      <span class="ml-2 font-bold grow text-4xl">JOJO Soba</span>
     </a>
-    <a
-      target="_blank"
-      aria-label={"github repository"}
-      href="https://github.com/jojosoba/web"
-      class="text-gray-200 hover:text-white"
-    >
-      <Icon name="mdi:github" class="h-7 w-7" />
-    </a>
+    <div class="flex items-center gap-3">
+      <!-- <Counter client:only="svelte" /> -->
+      <!-- <a
+        target="_blank"
+        href="https://vercel.com/templates/astro/view-transitions"
+        class="flex relative overflow-hidden group bg-gradient-to-br from-black/10 to-black/40 rounded-md px-2.5 h-7 text-gray-200 hover:text-white transition-colors gap-1 items-center"
+      >
+        <span class="text-xs">
+          <span class="font-bold">Our Course</span>
+        </span>
+        <Icon name="ion:book" class="h-4 w-4" />
+      </a> -->
+      <a
+        target="_blank"
+        aria-label={"github repository"}
+        href="https://github.com/jojosoba"
+        class="text-gray-200 hover:text-white"
+      >
+        <Icon name="mdi:github" class="h-7 w-7" />
+      </a>
+
+      <Icon id="openMenu" name="mdi:menu" class="lg:hidden h-7 w-7" />
+    </div>
   </div>
 </div>
+
+<script>
+  import { isMenuOpen } from "../store.js";
+  isMenuOpen.subscribe((open) => {
+    console.log("sub", open);
+    if (open) {
+      document.getElementById("PhoneMenu").style.display = "flex";
+    } else {
+      document.getElementById("PhoneMenu").style.display = "none";
+    }
+  });
+
+  // Set the store to true when the button is clicked
+  function openMenu() {
+    console.log("OPEN");
+    if (isMenuOpen.value) {
+      isMenuOpen.set(false);
+    } else {
+      isMenuOpen.set(true);
+    }
+  }
+
+  // Add an event listener to the button
+  document.getElementById("openMenu").addEventListener("click", openMenu);
+
+  window.addEventListener("popstate", function (event) {
+    console.log("URL changed!", window.location.href);
+  });
+  window.addEventListener("hashchange", function () {
+    console.log("Hash changed!", window.location.hash);
+  });
+</script>

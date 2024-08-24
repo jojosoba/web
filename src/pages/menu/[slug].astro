@@ -9,30 +9,32 @@ import PlayButton from "../../components/PlayButton.astro";
 import Layout from "../../layouts/Layout.astro";
 // import { allmenus } from "../../lib/data";
 export function getStaticPaths() {
- 
-const allMenus = [{
-  slug: "soba100",
-  title: "Soba 100%",
-  description: "The best of soba music",
-}]
+  const allMenus = [
+    {
+      slug: "soba100",
+      title: "Soba 100%",
+      description: "The best of soba music",
+    },
+  ];
 
- return allMenus.map((menu) => ({
-    params:menu
-    
+  return allMenus.map((menu) => ({
+    params: menu,
   }));
 }
 
 // const menu = allmenus.find((playlist) => playlist.id === id);
 // const menu = allMenus.find((menu) => menu.slug === slug);
 const menu = Astro.params;
-
 ---
 
 <Layout image={menu?.cover} title={menu?.title || "404"}>
   <div
     class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden rounded-lg"
-    <!-- transition:name=`menu ${menu?.id} box` -->
+    <!--
+    transition:name=`menu ${menu?.id} box`
+    --
   >
+    >
     <PageHeader />
     <div
       class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
@@ -77,16 +79,14 @@ const menu = Astro.params;
         <MusicsTable />
       </div>
     </div>
-    <div
-      class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b from-context"
-    >
+    <div class="absolute h-screen inset-0 z-[-1] bg-gradient-to-b from-context">
       <img
         src={menu?.cover}
         alt={menu?.title}
         class="el-to-fade transition-all duration-500 z-[-1] absolute inset-0 mix-blend-overlay opacity-20 scale-90 w-full h-full object-cover blur-md"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-t via-transparent from-zinc-900"
+        class="absolute inset-0 bg-gradient-to-t -z-10 from-zinc-900 via-zinc-900/80"
       >
       </div>
     </div>

@@ -1,14 +1,32 @@
 ---
+import logo from "../../assets/jojologo.svg"; // svgReference === '/src/image.svg'
 import SideMenuItem from "./SideMenuItem.astro";
 import { sidebarPlaylists } from "../../lib/data";
 import SideItemCard from "./SideItemCard.astro";
 import StoryCard from "../StoryCard.astro";
 import { getCollection } from "astro:content";
+import DynamicLogo from "../DynamicLogo.svelte";
+import { Image } from "astro:assets";
 const storyEntries = await getCollection("stories");
+const { mode } = Astro.props;
 ---
 
-<div class="flex flex-col flex-1 gap-2">
-  <div class="bg-zinc-900 rounded-lg">
+<div class="flex flex-col flex-1 gap-2 transition-all ease-in-out">
+  <div class="bg-zinc-900 rounded-lg overflow-hidden transition-all">
+    <a
+      href="/"
+      aria-label="go back to home page"
+      class="hidden lg:flex justify-center items-center gap-2 mx-5 my-4"
+    >
+      <Image
+        src={logo}
+        width={50}
+        height={50}
+        alt="JOJO Soba"
+        loading="eager"
+      />
+      <span class="ml-2 font-bold grow text-4xl">JOJO Soba</span>
+    </a>
     <ul>
       <SideMenuItem href="/shop" iconName="carbon:store" title="Shop" />
       <SideMenuItem href="/story" iconName="mdi:heart-outline" title="Story" />
@@ -19,7 +37,7 @@ const storyEntries = await getCollection("stories");
         iconName="tabler:flask-2"
         title="Lab"
       />
-       <SideMenuItem
+      <SideMenuItem
         href="/dojo"
         floor={3}
         iconName="tabler:karate"
@@ -31,13 +49,13 @@ const storyEntries = await getCollection("stories");
         iconName="tabler:coffee"
         title="Cafe"
       />
-      <SideMenuItem href="/" floor={1} iconName="tabler:home" title="Home" />
+      <SideMenuItem href="/#" floor={1} iconName="tabler:home" title="Home" />
     </ul>
   </div>
 
-  <div class="bg-zinc-900 rounded-lg flex-1">
+  <div class=`bg-zinc-900 rounded-lg flex-1 hidden lg:block`>
     <ul>
-      <SideMenuItem href="#" iconName="ic:round-chat">Blogs</SideMenuItem>
+      <SideMenuItem href="#" title="Blogs" iconName="ic:round-chat" />
     </ul>
     <ul class="pl-2">
       {storyEntries.map((story) => <SideItemCard playlist={story.data} />)}

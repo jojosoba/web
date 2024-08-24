@@ -17,16 +17,12 @@ const storyEntries = await getCollection("stories");
     class="relative transition-all duration-1000 bg-context"
     style="min-height:300px;--context-color:#134e4a;"
   >
-    <PageHeader transition:name="soba" type="soba" />
+    <PageHeader client:load transition:name="soba" type="soba" />
     <div class="relative z-10 px-6">
-      <div
-        class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
-      >
-        {storyEntries.map((story) => <StoryCard story={story.data} />)}
-      </div>
+      <h1 class="text-4xl font-bold">The MENU</h1>
     </div>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+      class="absolute inset-0 bg-gradient-to-t -z-10 from-zinc-900 via-zinc-900/80"
     >
     </div>
   </div>

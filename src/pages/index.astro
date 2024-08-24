@@ -8,6 +8,7 @@ import Layout from "../layouts/Layout.astro";
 import { playlists, morePlaylists } from "../lib/data";
 import StoryCard from "../components/StoryCard.astro";
 import StoryBigCard from "src/components/StoryBigCard.astro";
+import Counter from "src/components/Counter.svelte";
 
 const storyEntries = await getCollection("stories");
 ---
@@ -22,14 +23,14 @@ const storyEntries = await getCollection("stories");
     <div class="relative z-10 px-6">
       <GreetingTitle client:visible />
       <div
-        class="grid gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
+        class="grid z-10 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
       >
         {storyEntries.map((story) => <StoryCard story={story.data} />)}
       </div>
-    </div>
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
-    >
+      <div
+        class="absolute min-h-[300] inset-0 bg-gradient-to-t -z-10 from-zinc-900 via-zinc-900/80"
+      >
+      </div>
     </div>
   </div>
   <div class="px-6 relative z-10 mt-4">
