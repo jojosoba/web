@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import GreetingTitle from "../../components/GreetingTitle.svelte";
+import PageHeader from "../../components/PageHeader.astro";
+import PlaylistCard from "../../components/PlaylistCard.astro";
+import PlaylistItemCard from "../../components/PlaylistItemCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { playlists, morePlaylists } from "../../lib/data";
+import { Image } from "astro:assets";
+import DynamicLogo from "../../components/DynamicLogo.svelte";
+import goodwheat from "../../assets/goodwheat.png";
+import stangplatinum from "../../assets/stpt.png";
+
+const storyEntries = await getCollection("stories");
+---
+
+<Layout title="Lab">
+  <div
+    id="playlist-container"
+    class="relative transition-all duration-1000 bg-context"
+    style="min-height:300px;--context-color:#134e4a;"
+  >
+    <PageHeader type="shop" transition:name="shop" />
+
+    <!-- <Image src={goodwheat} alt="Lab" class="w-full" />
+    <Image src={stangplatinum} alt="Lab" class="w-full" />
+    <h1 class="text-4xl font-bold text-center mt-4">
+      call me 063-897-แปดหนึ่งแปดเจ็ด
+    </h1> -->
+
+     Preorder Items 1. soba rolls 2. 1kg flours
+    <br />
+     How to Plant bw, How to collab, How to cook, Lab Findings,
+  </div>
+  <div class="px-6 relative z-10 mt-4"></div>
+</Layout>

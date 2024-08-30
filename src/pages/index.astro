@@ -28,6 +28,11 @@ const storyEntries = await getCollection("stories");
         {storyEntries.map((story) => <StoryCard story={story.data} />)}
       </div>
       <div
+        class="grid z-10 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
+      >
+        {storyEntries.map((story) => <StoryCard story={story.data} />)}
+      </div>
+      <div
         class="absolute min-h-[300] inset-0 bg-gradient-to-t -z-10 from-zinc-900 via-zinc-900/80"
       >
       </div>

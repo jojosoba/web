@@ -1,6 +1,7 @@
 <script lang="ts">
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
+  const currentSecond = currentTime.getSeconds();
 
   let greeting = "";
 
@@ -11,6 +12,19 @@
   } else {
     greeting = "Good night";
   }
+
+  let care = "";
+
+  if (currentSecond ) {
+    greeting = "Ingredients";
+  } else if (currentSecond >= 12 && currentSecond < 18) {
+    greeting = "Good afternoon";
+  } else {
+    greeting = "Good night";
+  }
+ 
+
+
 </script>
 
-<h1 class="text-3xl font-bold">{greeting}</h1>
+<h1 class="text-3xl font-bold"> We Care about {greeting}</h1>
