@@ -18,9 +18,9 @@
   if (currentSecond ) {
     greeting = "Ingredients";
   } else if (currentSecond >= 12 && currentSecond < 18) {
-    greeting = "Good afternoon";
+    greeting = "Community";
   } else {
-    greeting = "Good night";
+    greeting = "Environments";
   }
  
 

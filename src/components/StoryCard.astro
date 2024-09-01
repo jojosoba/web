@@ -32,7 +32,12 @@ if (!images[story.cover])
       transition:name=`story ${story.slug} image`
     />
   </div>
-  <div class="font-bold block" transition:name=`story ${story.slug} title`>
-    {story.title}
+  <div transition:name=`story ${story.slug} title`>
+    <p class="text-md">
+      stories/<strong class="text-red-400">{story.slug}</strong>
+    </p>
+    <h3 class="font-bold block text-2xl lg:text-3xl">
+      {story.title}
+    </h3>
   </div>
 </a>

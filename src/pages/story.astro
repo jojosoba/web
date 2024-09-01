@@ -1,0 +1,177 @@
+---
+import { getCollection } from "astro:content";
+import PageHeader from "../components/PageHeader.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import cheekstand from "../assets/cheekst.png";
+import choyu from "../assets/choyu.jpg";
+import coldsoba from "../assets/coldsoba.jpg";
+import bw from "../assets/bw.jpg";
+import store from "../assets/storefront.jpg";
+import "../story.css";
+import StoryCard from "src/components/StoryCard.astro";
+
+const storyEntries = await getCollection("stories");
+---
+
+<Layout title="Home">
+  <div
+    id="playlist-container"
+    class="relative transition-all duration-1000 bg-context"
+    style="min-height:100px;--context-color:rgb(97,125,138);"
+  >
+    <PageHeader transition:name="soba" type="soba" />
+    <div class="z-10 px-6 pb-3">
+      <h1
+        class="font-serif text-5xl lg:text-7xl font-bold text-gray-300"
+        style="color: antiquewhite;"
+      >
+        Our Story
+      </h1>
+      <h4 class="text-xl">
+        We are here for the love of buckwheat, people, and its mighty story
+      </h4>
+
+      <!-- <Image src={cheekstand} alt="Lab" class="w-36" /> -->
+    </div>
+  </div>
+  <!-- <div class="custom-pattern filter">
+    <h1 class="text-5xl font-bold backdrop-brightness-50">WHY Soba?</h1>
+  </div>
+  <div class="custom-pattern filter">
+    <h1 class="text-5xl font-bold backdrop-brightness-50">
+      Buckwheat is not a grain?!
+    </h1>
+  </div>
+  <div class="custom-pattern filter">
+    <h1 class="text-5xl font-bold backdrop-brightness-50">
+      Our Mission to promote regenerative business
+    </h1>
+     how we will help environment, bring back community and improve your health!
+  </div> -->
+  <div class="content">
+    <div class="section">
+      <h2>Why Soba?</h2>
+      <p>
+        At Jojosoba, we're passionate about bringing the authentic taste and
+        health benefits of buckwheat soba to our community. But why soba, you
+        might ask?
+      </p>
+      <!-- <img src="/api/placeholder/600/400" alt="Bowl of soba noodles" /> -->
+      <Image src={coldsoba} alt={"SOBA"} />
+      <p>
+        Soba isn't just delicious; it's a nutritional powerhouse. Buckwheat, the
+        main ingredient in our soba, is packed with fiber, antioxidants, and
+        essential minerals. It's naturally gluten-free and has a low glycemic
+        index, making it a great choice for everyone, including those with
+        gluten sensitivities or those managing their blood sugar levels.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Buckwheat: Not Your Average Grain</h2>
+      <p>
+        Here's a fun fact: buckwheat isn't actually a grain at all! It's a seed
+        that's used like a grain, making it a "pseudocereal." This unique plant
+        has been cultivated for thousands of years, with evidence of its use
+        dating back to 6000 BCE in Southeast Asia.
+      </p>
+      <Image src={bw} alt="Buckwheat" />
+
+      <p>
+        At Jojosoba, we celebrate this ancient food by crafting our noodles from
+        100% buckwheat flour, unlike many commercial soba noodles that mix in
+        wheat flour. We believe in preserving the traditional methods and
+        flavors that have made soba a beloved dish for centuries.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Our Mission: Promoting Regenerative Business</h2>
+      <p>
+        We're not just here to serve great food; we're on a mission to promote
+        regenerative business practices that benefit our environment, strengthen
+        our community, and improve your health.
+      </p>
+      <ul class="flex flex-col m-2 gap-4">
+        <li>
+          <strong>Environment:</strong> By sourcing our buckwheat from local,
+          sustainable farms, we're supporting eco-friendly agricultural
+          practices that improve soil health and biodiversity.
+        </li>
+        <StoryCard
+          story={{
+            title: "Regenerating Environment",
+            cover: "/assets/coldsoba.jpg",
+            slug: "environment",
+            tags: ["regenerative"],
+          }}
+        />
+        <li>
+          <strong>Community:</strong> We believe in the power of food to bring
+          people together. Our restaurant is more than just a place to eat; it's
+          a hub for cultural exchange and community building.
+        </li>
+        <StoryCard
+          story={{
+            title: "Community",
+            cover: "/assets/stpt.png",
+            slug: "community",
+            tags: ["regenerative"],
+          }}
+        />
+        <li>
+          <strong>Health:</strong> By serving nutrient-dense, minimally
+          processed foods, we're contributing to the health and wellbeing of our
+          customers.
+        </li>
+        <StoryCard
+          story={{
+            title: "soba&health",
+            cover: "/assets/goodwheat.png",
+            slug: "health",
+            tags: ["regenerative", "soba", "health"],
+          }}
+        />
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Our Unique Approach</h2>
+      <p>
+        At Jojosoba, we do things a little differently. We mill our own
+        buckwheat flour in-house, craft our noodles by hand, and even ferment
+        our own sauces. Why go through all this trouble?
+      </p>
+      <div class="quote">
+        "We want consumers to rediscover the value of simple foods that anyone
+        can make at home, using ingredients that come directly from farmers.
+        We're reducing the steps of industrial processing. Milling flour,
+        kneading it, cutting it into noodles, boiling them, and eating them as a
+        meal is something that every household used to do without needing a
+        master chef with 50 years of experience or any special qualifications."
+      </div>
+      <p>
+        This approach not only results in fresher, more flavorful dishes, but it
+        also connects us more closely to our food and its origins.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Join Us on This Culinary Journey</h2>
+      <p>
+        Whether you're a soba aficionado or new to this delightful noodle, we
+        invite you to experience the Jojosoba difference. Come taste the rich
+        history and bright future of buckwheat soba, served with a side of
+        community and sustainability.
+      </p>
+      <Image src={store} alt="store front" />
+    </div>
+  </div>
+  <!-- <div
+  class="grid z-10 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
+>
+  {storyEntries.map((story) => <StoryCard story={story.data} />)}
+</div> -->
+</Layout>

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["SVBasicManual", "Mali", "sans-serif"],
+        serif: ["Mali"],
       },
       colors: {
         context: "var(--context-color)",

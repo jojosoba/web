@@ -7,4 +7,8 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   root: "./src",
   integrations: [tailwind(), svelte()],
+  i18n: {
+    defaultLocale: "en",
+    locales: ["th", "en"],
+  },
 });

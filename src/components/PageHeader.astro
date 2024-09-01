@@ -20,7 +20,7 @@ const type = "cafe";
     <SideMenu mode="phone" />
   </div>
   <div
-    class="relative z-10 py-4 px-6 flex justify-between"
+    class="relative z-10 py-4 px-6 flex justify-between lg:py-2"
     transition:name="page header"
     transition:persist
   >
@@ -38,7 +38,7 @@ const type = "cafe";
       />
       <span class="ml-2 font-bold grow text-4xl">JOJO Soba</span>
     </a>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 lg:absolute lg:right-5 lg:top-4 z-4">
       <!-- <Counter client:only="svelte" /> -->
       <!-- <a
         target="_blank"
@@ -54,7 +54,7 @@ const type = "cafe";
         target="_blank"
         aria-label={"github repository"}
         href="https://github.com/jojosoba"
-        class="text-gray-200 hover:text-white"
+        class="text-gray-200 hover:text-white z-10"
       >
         <Icon name="mdi:github" class="h-7 w-7" />
       </a>

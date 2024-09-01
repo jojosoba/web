@@ -1,0 +1,48 @@
+.header {
+  background-color: #4a4a4a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+.content {
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.section {
+  margin-bottom: 30px;
+}
+h1,
+h2 {
+  color: #aecbe8;
+  font-weight: 900;
+  font-family: Mali;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+strong {
+  font-weight: 900;
+  font-size: larger;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.quote {
+  font-style: italic;
+  color: #7f8c8d;
+  border-left: 3px solid #2c3e50;
+  padding-left: 20px;
+  margin: 20px 0;
+}
