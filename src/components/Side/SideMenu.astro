@@ -58,7 +58,7 @@ const { mode } = Astro.props;
       <SideMenuItem href="#" title="Blogs" iconName="ic:round-chat" />
     </ul>
     <ul class="pl-2">
-      {storyEntries.map((story) => <SideItemCard playlist={story.data} />)}
+      {storyEntries.map((story) => <SideItemCard story={story.data} />)}
     </ul>
   </div>
 </div>

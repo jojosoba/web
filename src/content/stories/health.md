@@ -1,5 +1,5 @@
 ---
-title: Buckwheat: The Superfood You Need in Your Diet
+title: "Buckwheat: The Superfood You Need in Your Diet"
 author: big+chatgpt
 slug: health
 tags: ["story", "regenerative"]

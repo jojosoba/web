@@ -2,6 +2,7 @@
 title: “ร้านนี้ไม่มีสูตรลับ มีแต่สูตรเปิดเผย”
 author: เรื่อง ปิยฉัตร เมนาคม, ภาพ โตมร เช้าสาคร
 slug: "why"
+tags: ["story", "soba"]
 cover: "/assets/who.png"
 ---
 

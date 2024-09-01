@@ -25,13 +25,13 @@ const storyEntries = await getCollection("stories");
       <div
         class="grid z-10 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
       >
-        {storyEntries.map((story) => <StoryCard story={story.data} />)}
+        {storyEntries.map((s) => <StoryCard story={{ ...s.data }} />)}
       </div>
-      <div
+      <!-- <div
         class="grid z-10 gap-y-4 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-6"
       >
-        {storyEntries.map((story) => <StoryCard story={story.data} />)}
-      </div>
+        {storyEntries.map((story) => <StoryCard story={{ ...story.data }} />)}
+      </div> -->
       <div
         class="absolute min-h-[300] inset-0 bg-gradient-to-t -z-10 from-zinc-900 via-zinc-900/80"
       >
@@ -41,7 +41,12 @@ const storyEntries = await getCollection("stories");
   <div class="px-6 relative z-10 mt-4">
     <h2 class="text-2xl font-bold">Made for you</h2>
     <div class="flex flex-wrap mt-6 gap-4">
-      {storyEntries.map((story) => <StoryBigCard story={story.data} />)}
+      {
+        storyEntries.map((s) => {
+          console.log(s.data, "sdata");
+          return <StoryBigCard story={{ ...s.data }} />;
+        })
+      }
     </div>
   </div>
 </Layout>
