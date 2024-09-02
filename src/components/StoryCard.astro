@@ -24,19 +24,22 @@ if (!images[story.cover]) {
   data-color={colors.teal}
   transition:name=`story ${story.slug} box`
 >
-  <div class="h-20 w-20 aspect-square">
+  <div class="h-20 aspect-square">
     <Image
       src={images[story.cover]()}
       alt={story.title}
-      class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3) aspect-square"
+      class="object-cover h-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)"
       transition:name=`story ${story.slug} image`
     />
   </div>
-  <div transition:name=`story ${story.slug} title`>
-    <p class="text-md">
+  <div
+    transition:name=`story ${story.slug} title`
+    class="flex flex-col justify-between"
+  >
+    <span class="text-md">
       stories/<strong class="text-red-400">{story.slug}</strong>
-    </p>
-    <h3 class="font-bold block text-2xl lg:text-3xl">
+    </span>
+    <h3 class="font-bold block text-xl">
       {story.title}
     </h3>
   </div>

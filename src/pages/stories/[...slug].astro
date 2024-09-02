@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import { Image } from "astro:assets";
+import MDLayout from "src/layouts/MDLayout.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const storyEntries = await getCollection("stories");
@@ -23,7 +24,8 @@ if (!images[story.cover])
   );
 ---
 
-<Layout image={story?.cover} title={story?.title || "404"}>
+<!-- <Layout image={story?.cover} title={story?.title || "404"}> -->
+<MDLayout frontmatter={story}>
   <div
     class="relative bg-zinc-900 min-h-full flex flex-col overflow-x-hidden rounded-lg"
     transition:name=`story ${story?.slug} box`
@@ -77,15 +79,26 @@ if (!images[story.cover])
       >
       </div>
     </div>
-    <div class="px-6 pt-4">
+    <article class="px-6 pt-4 prose lg:prose-lg dark:prose-invert max-w-none">
       <Content />
-    </div>
+    </article>
   </div>
-</Layout>
+</MDLayout>
 
 <style>
   .title-clamp {
     font-size: clamp(10px, 5vw, 40px);
     line-height: 1;
   }
+  h4 {
+    color: red;
+  }
 </style>
+
+<!-- <style is:global>
+  /* alternatively, you can use global style rules which will always appear last in order of appearance */
+  /* however, this rule would apply to all pages, which may not be ideal */
+  article p {
+    color: blue;
+  }
+</style> -->
