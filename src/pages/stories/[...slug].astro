@@ -32,22 +32,26 @@ if (!images[story.cover])
   >
     <PageHeader />
     <div
-      class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6"
+      class="flex flex-col items-center md:flex-row md:items-stretch gap-8 px-6 mt-1"
     >
-      <div class="h-52 w-52 flex-none">
+      <div class="h-52 rounded-md flex-none">
         <Image
           src={images[story?.cover]()}
           alt={story?.title}
-          class="object-cover h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
+          class="object-cover rounded-lg h-full w-full shadow-[5px_0_30px_0px_rgba(0,0,0,0.3)]"
           transition:name=`story ${story?.slug} image`
         />
       </div>
       <div class="flex flex-col justify-between">
         <div>
-          <h1 class="title-clamp font-bold block">
-            {story?.title}
-            <span transition:name=`story ${story?.slug} title`></span>
+          <h1 class="title-clamp font-bold block lg:mr-8">
+            <span transition:name=`story ${story?.slug} title`>
+              {story?.title}
+            </span>
           </h1>
+          <span class="mt-4 italic opacity-75">
+            {story?.caption}
+          </span>
         </div>
         <div class="flex-1 flex items-end">
           <div class="text-sm">
