@@ -9,25 +9,39 @@ type Props = {
 };
 
 const { href, iconName, floor, title } = Astro.props;
-console.log(Astro.url.pathname.includes(href));
+console.log(Astro.url.pathname.includes(href), href, "href");
 ---
 
-<li>
-  <a
-    {href}
-    class={`flex gap-4 ${
-      Astro.url.pathname.includes(href) && href != "/"
-        ? "bg-fuchsia-800 custom-pattern text-white border-x-violet-100 transform skew-y-[24] hover:text-red"
-        : "text-zinc-400 hover:text-zinc-100 "
-    } py-3.5 px-5 font-semibold transition-all duration-300 drop-shadow-2xl `}
-  >
-    <Icon name={iconName} class="h-6 w-6 drop-shadow-2xl" />
-    <h4 class="drop-shadow-2xl">
-      {title}
-    </h4>
+<li
+  class={` ${
+    (Astro.url.pathname.includes(href) && href !== "/") ||
+    (Astro.url.pathname === "/" && href === "/")
+      ? "bg-fuchsia-800 custom-pattern text-white border-x-violet-100 transform skew-y-[24] hover:text-red"
+      : "text-zinc-400 hover:text-zinc-100 "
+  } font-semibold transition-all duration-300 drop-shadow-2xl `}
+>
+  <a {href} class="flex flex-row justify-between">
+    <div
+      class={"flex gap-4 flex-row py-3.5 px-5 " +
+        ((Astro.url.pathname.includes(href) && href !== "/") ||
+        (Astro.url.pathname === "/" && href === "/")
+          ? "bg-gradient-to-r from-black opacity-80 to-transparent from-30% pl-7"
+          : "")}
+    >
+      <Icon name={iconName} class="h-6 w-6 drop-shadow-2xl" />
+      <h4
+        class={"drop-shadow-2xl " +
+          ((Astro.url.pathname.includes(href) && href !== "/") ||
+          (Astro.url.pathname === "/" && href === "/")
+            ? "scale-115 font-bold text-white"
+            : "")}
+      >
+        {title}
+      </h4>
+    </div>
     {
       floor ? (
-        <div class="ml-auto -rotate-3 bg-secondary-500 px-2 rounded-md text-white">
+        <div class="flex self-center mr-2 ml-auto -rotate-3 bg-secondary-500 px-2 rounded-md text-white">
           FLR {floor}
         </div>
       ) : null

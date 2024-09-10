@@ -10,11 +10,12 @@ import { Image } from "astro:assets";
 import DynamicLogo from "../../components/DynamicLogo.svelte";
 import goodwheat from "../../assets/goodwheat.png";
 import stangplatinum from "../../assets/stpt.png";
+import LabLayout from "src/layouts/LabLayout.astro";
 
 const storyEntries = await getCollection("stories");
 ---
 
-<Layout title="Lab">
+<LabLayout title="Lab">
   <div
     id="playlist-container"
     class="relative transition-all duration-1000 bg-context"
@@ -33,4 +34,4 @@ const storyEntries = await getCollection("stories");
      How to Plant bw, How to collab, How to cook, Lab Findings,
   </div>
   <div class="px-6 relative z-10 mt-4"></div>
-</Layout>
+</LabLayout>
